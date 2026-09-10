@@ -4,3 +4,8 @@ __pycache__/
 .venv/
 dist/
 build/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.DS_Store
