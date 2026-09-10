@@ -3,6 +3,9 @@ import os
 from price_tracker import Object
 from forms import MakeObject
 import json
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
