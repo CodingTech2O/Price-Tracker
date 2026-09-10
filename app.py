@@ -2,7 +2,6 @@ from flask import Flask,redirect,render_template,flash, url_for,abort
 import os
 from price_tracker import Object
 from forms import MakeObject
-import json
 from dotenv import load_dotenv
 
 load_dotenv()
