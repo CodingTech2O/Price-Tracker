@@ -1,4 +1,4 @@
-from flask import Flask,redirect,render_template,flash, url_for
+from flask import Flask,redirect,render_template,flash, url_for,abort
 import os
 from price_tracker import Object
 from forms import MakeObject
@@ -24,13 +24,14 @@ def index():
 
 @app.route("/track/<name>")
 def track(name):
-    product = data[name]
-    if product.check_if_reached_target():
-        reached = True
+    product = data.get(name)
+    if product is None:
+        abort(404)
+
+    reached = product.check_if_reached_target()
+    if reached:
         data.pop(name)
-    else:
-        reached = False
-    return render_template("tracker.html", product=product,reached = reached)
+    return render_template("tracker.html", product=product, reached=reached)
 
 if __name__ == '__main__':
     app.run(debug=True)
