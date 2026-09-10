@@ -33,5 +33,6 @@ def track(name):
         data.pop(name)
     return render_template("tracker.html", product=product, reached=reached)
 
+
 if __name__ == '__main__':
     app.run(debug=True)
