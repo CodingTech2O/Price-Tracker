@@ -1,0 +1,319 @@
+/* ==========================================================================
+   Product Price Tracker — product tracking page (dark theme)
+   Shares tokens with style.css so both pages feel like one app.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+    color-scheme: dark;
+
+    --bg:            #0d1524;
+    --surface:       #131e33;
+    --border:        #22324d;
+    --border-strong: #2f4468;
+    --text:          #e4eaf4;
+    --text-muted:    #8797b1;
+    --accent:        #4c8dff;
+    --accent-hover:  #6aa1ff;
+    --accent-soft:   rgba(76, 141, 255, 0.10);
+    --success:       #3ecf8e;
+    --success-soft:  rgba(62, 207, 142, 0.10);
+    --focus-ring:    rgba(76, 141, 255, 0.45);
+
+    --font: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 640px;
+    min-height: 100vh;
+    padding: var(--space-7) var(--space-5);
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 1rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Product name ---------- */
+
+h1 {
+    margin: 0 0 var(--space-6);
+    font-size: clamp(1.75rem, 4vw + 0.5rem, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+}
+
+/* ---------- Target price panel (the focal point of the page) ---------- */
+
+h2 {
+    margin: 0;
+    padding: var(--space-5) var(--space-6);
+    background: linear-gradient(90deg, var(--accent-soft), transparent 70%), var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius-sm) var(--radius-md) var(--radius-md) var(--radius-sm);
+    color: var(--text);
+    font-size: clamp(1.35rem, 2.5vw + 0.6rem, 1.85rem);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+}
+
+/* Optional: add class="reached" to <body> when {% if reached %} is true
+   and the panel switches to a green "target hit" state. */
+body.reached h2 {
+    background: linear-gradient(90deg, var(--success-soft), transparent 70%), var(--surface);
+    border-left-color: var(--success);
+}
+
+body.reached h2::after {
+    content: "Target reached";
+    display: inline-block;
+    margin-left: var(--space-3);
+    padding: 0.15em 0.6em;
+    background: var(--success-soft);
+    border: 1px solid rgba(62, 207, 142, 0.35);
+    border-radius: 999px;
+    color: var(--success);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    vertical-align: middle;
+}
+
+/* ---------- Links (e.g. a "Back to all products" link, if added) ---------- */
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+a:focus-visible {
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+body > a {
+    display: inline-block;
+    margin-bottom: var(--space-5);
+    font-size: 0.9rem;
+}
+
+/* ---------- Responsive & accessibility ---------- */
+
+@media (max-width: 480px) {
+    body {
+        padding: var(--space-6) var(--space-4);
+    }
+
+    h2 {
+        padding: var(--space-4) var(--space-5);
+    }
+
+    body.reached h2::after {
+        display: table;
+        margin: var(--space-2) 0 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}/* ==========================================================================
+   Product Price Tracker — product tracking page (dark theme)
+   Shares tokens with style.css so both pages feel like one app.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+    color-scheme: dark;
+
+    --bg:            #0d1524;
+    --surface:       #131e33;
+    --border:        #22324d;
+    --border-strong: #2f4468;
+    --text:          #e4eaf4;
+    --text-muted:    #8797b1;
+    --accent:        #4c8dff;
+    --accent-hover:  #6aa1ff;
+    --accent-soft:   rgba(76, 141, 255, 0.10);
+    --success:       #3ecf8e;
+    --success-soft:  rgba(62, 207, 142, 0.10);
+    --focus-ring:    rgba(76, 141, 255, 0.45);
+
+    --font: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 640px;
+    min-height: 100vh;
+    padding: var(--space-7) var(--space-5);
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 1rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Product name ---------- */
+
+h1 {
+    margin: 0 0 var(--space-6);
+    font-size: clamp(1.75rem, 4vw + 0.5rem, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+}
+
+/* ---------- Target price panel (the focal point of the page) ---------- */
+
+h2 {
+    margin: 0;
+    padding: var(--space-5) var(--space-6);
+    background: linear-gradient(90deg, var(--accent-soft), transparent 70%), var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius-sm) var(--radius-md) var(--radius-md) var(--radius-sm);
+    color: var(--text);
+    font-size: clamp(1.35rem, 2.5vw + 0.6rem, 1.85rem);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+}
+
+/* Optional: add class="reached" to <body> when {% if reached %} is true
+   and the panel switches to a green "target hit" state. */
+body.reached h2 {
+    background: linear-gradient(90deg, var(--success-soft), transparent 70%), var(--surface);
+    border-left-color: var(--success);
+}
+
+body.reached h2::after {
+    content: "Target reached";
+    display: inline-block;
+    margin-left: var(--space-3);
+    padding: 0.15em 0.6em;
+    background: var(--success-soft);
+    border: 1px solid rgba(62, 207, 142, 0.35);
+    border-radius: 999px;
+    color: var(--success);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    vertical-align: middle;
+}
+
+/* ---------- Links (e.g. a "Back to all products" link, if added) ---------- */
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+a:focus-visible {
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+body > a {
+    display: inline-block;
+    margin-bottom: var(--space-5);
+    font-size: 0.9rem;
+}
+
+/* ---------- Responsive & accessibility ---------- */
+
+@media (max-width: 480px) {
+    body {
+        padding: var(--space-6) var(--space-4);
+    }
+
+    h2 {
+        padding: var(--space-4) var(--space-5);
+    }
+
+    body.reached h2::after {
+        display: table;
+        margin: var(--space-2) 0 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}

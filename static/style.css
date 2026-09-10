@@ -1,0 +1,269 @@
+/* ==========================================================================
+   Product Price Tracker — index page (dark theme)
+   Works with the existing Jinja/WTForms markup; no template changes needed.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+    color-scheme: dark;
+
+    /* Palette: blue-tinted navy, not flat black */
+    --bg:            #0d1524;
+    --surface:       #131e33;
+    --surface-hover: #182640;
+    --input-bg:      #0f192b;
+    --border:        #22324d;
+    --border-strong: #2f4468;
+    --text:          #e4eaf4;
+    --text-muted:    #8797b1;
+    --accent:        #4c8dff;
+    --accent-hover:  #6aa1ff;
+    --accent-press:  #3a78e6;
+    --focus-ring:    rgba(76, 141, 255, 0.45);
+
+    /* Type */
+    --font: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+    /* Shape & spacing */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 640px;
+    min-height: 100vh;
+    padding: var(--space-7) var(--space-5);
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 1rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* The template uses <br> tags for spacing; layout is handled here instead */
+body > br,
+form br,
+.products br {
+    display: none;
+}
+
+/* Optional page heading, if you add an <h1> above the form */
+h1 {
+    margin: 0 0 var(--space-6);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+/* ---------- Add-product form ---------- */
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: var(--radius-md);
+}
+
+form label {
+    margin-bottom: var(--space-2);
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+form input:not([type="hidden"]):not([type="submit"]) {
+    width: 100%;
+    margin-bottom: var(--space-5);
+    padding: var(--space-3) var(--space-4);
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.95rem;
+    font-variant-numeric: tabular-nums;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+form input:not([type="hidden"]):not([type="submit"])::placeholder {
+    color: #5c6d89;
+}
+
+form input:not([type="hidden"]):not([type="submit"]):hover {
+    border-color: var(--border-strong);
+}
+
+form input:not([type="hidden"]):not([type="submit"]):focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* Stop Chrome's autofill from painting inputs pale yellow */
+form input:-webkit-autofill,
+form input:-webkit-autofill:hover,
+form input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--text);
+    -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset;
+    caret-color: var(--text);
+    transition: background-color 9999s ease-out;
+}
+
+form input[type="submit"] {
+    align-self: flex-start;
+    margin-top: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    background: var(--accent);
+    border: none;
+    border-radius: var(--radius-sm);
+    color: #fff;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+form input[type="submit"]:hover {
+    background: var(--accent-hover);
+}
+
+form input[type="submit"]:active {
+    background: var(--accent-press);
+}
+
+form input[type="submit"]:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* ---------- Tracked products list ---------- */
+
+.products {
+    margin-top: var(--space-7);
+}
+
+.products h2 {
+    margin: 0 0 var(--space-4);
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* Links render as rows of one connected list */
+.products a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom-width: 0;
+    color: var(--text);
+    font-weight: 500;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: background-color 0.15s ease;
+}
+
+.products a:first-of-type {
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.products a:last-of-type {
+    border-bottom-width: 1px;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.products a:only-of-type {
+    border-radius: var(--radius-md);
+}
+
+/* Chevron hint on the right side of each row */
+.products a::after {
+    content: "";
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    border-top: 2px solid var(--text-muted);
+    border-right: 2px solid var(--text-muted);
+    transform: rotate(45deg);
+    transition: border-color 0.15s ease;
+}
+
+.products a:hover {
+    background: var(--surface-hover);
+}
+
+.products a:hover::after {
+    border-color: var(--accent);
+}
+
+.products a:focus-visible {
+    position: relative;
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+}
+
+/* Empty state when nothing is being tracked yet */
+.products:not(:has(a))::after {
+    content: "Nothing tracked yet. Add a product above to start watching its price.";
+    display: block;
+    padding: var(--space-6) var(--space-5);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+/* ---------- Responsive & accessibility ---------- */
+
+@media (max-width: 480px) {
+    body {
+        padding: var(--space-6) var(--space-4);
+    }
+
+    form {
+        padding: var(--space-5);
+    }
+
+    form input[type="submit"] {
+        align-self: stretch;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
