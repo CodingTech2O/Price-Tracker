@@ -129,6 +129,9 @@ Flask Routes
       Product Data
 ```
 
+<img width="1800" height="1360" alt="image" src="https://github.com/user-attachments/assets/d4c9e88f-05eb-4bd4-8491-f56d7c1acbfe" />
+
+
 The Flask application handles requests and routes while the price-tracking logic is separated into `price_tracker.py`.
 
 ## 📌 Project Goals
@@ -149,6 +152,10 @@ This project was built to explore and practice:
 Prices and product availability can change at any time.
 
 Always verify the final price and product details on the retailer's website before making a purchase.
+
+This code only supports *amazon.com* currently.
+
+The prices are only checked when user is on the endpoint.
 
 ## 🤝 Contributing
 
